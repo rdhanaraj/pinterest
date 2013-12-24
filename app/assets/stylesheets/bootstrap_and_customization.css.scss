@@ -1,1 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700|Lobster);
+
+$body-bg:                   #ecf0f1;
+$font-family-sans-serif:    'Lato', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+$navbar-height:             48px;
+$navbar-default-bg:         white;
+$navbar-default-brand-color:#e74c3c;
+$brand-primary:             #e74c3c;
+$jumbotron-bg:              white;
+
 @import 'bootstrap';
+
+.navbar-header
+{
+  font-family: 'Lobster', cursive;
+}
+
+.jumbotron
+{
+  padding: 15px;
+}
