@@ -1,9 +1,13 @@
 <div class="jumbotron text-center">
   <h2>Welcome to Pinterest, the magical land of Pins</h2>
-  <p>
-    <%= link_to "Log in", "#", class: "btn btn-default btn-large" %>
-    <%= link_to "Sign up", "#", class: "btn btn-primary btn-large" %>
-  </p>
+
+  <% if user_signed_in? %>
+  <% else %>
+    <p>
+      <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-large" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-large" %>
+    </p>
+  <% end %>
   <hr>
   <%= image_tag "pinterest-board.jpeg", class: "img-thumbnail"%>
 </div>
