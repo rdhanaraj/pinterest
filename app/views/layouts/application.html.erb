@@ -15,12 +15,9 @@
       <%= content_tag(:div, msg, class: "alert alert-info")%>
     <% end %>
 
-		<%= yield %>
-    <div class="footer">
-      <p>
-        &copy; <%= link_to 'Rishi Dhanaraj', 'http://twitter.com/@rishidhanaraj' %> 2013
-      </p>
-    </div>    
+		<%= yield %>  
+
+  <%= render 'layouts/footer' %>  
   </div>
 </body>
 </html>
