@@ -3,13 +3,15 @@
 <% @pins.each do |pin| %>
   <div class="panel panel-default">
 
-    <div class="panel-body row text-center">
-      <%= image_tag pin.image.url :medium %>
+    <div class="panel-body">
+      <div class="row text-center">
+        <%= image_tag pin.image.url :medium, class: 'img img-thumbnail' %>
+      </div>
       <div class="pull-right">
         <%= link_to 'Read', pin %>
         <% if pin.user == current_user %>
-          <%= link_to 'Edit', edit_pin_path(pin) %>
-          <%= link_to 'Delete', pin, method: :delete, data: { confirm: 'Are you sure about deleting this pin?' } %>
+          | <%= link_to 'Edit', edit_pin_path(pin) %>
+          | <%= link_to 'Delete', pin, method: :delete, data: { confirm: 'Are you sure about deleting this pin?' } %>
         <% end %>
       </div>
     </div>
