@@ -1,27 +1,30 @@
-<h2>Listing pins</h2>
+<h2>Pinboard</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% @pins.each do |pin| %>
+  <div class="panel panel-default">
 
-  <tbody>
-    <% @pins.each do |pin| %>
-      <tr>
-        <td><%= pin.description %></td>
-        <td><%= link_to 'Show', pin %></td>
-        <td><%= link_to 'Edit', edit_pin_path(pin) %></td>
-        <td><%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="panel-body">
+      <%= pin.description %>
+      <div class="pull-right">
+        <%= link_to 'Read', pin %>
+        <% if pin.user == current_user %>
+          <%= link_to 'Edit', edit_pin_path(pin) %>
+          <%= link_to 'Delete', pin, method: :delete, data: { confirm: 'Are you sure about deleting this pin?' } %>
+        <% end %>
+      </div>
+    </div>
 
-<br>
+    <div class="panel-footer">
+      Created by <%= pin.user.try :email %>
+    </div>
 
-<%= link_to 'New Pin', new_pin_path %>
+  </div>
+<% end %>
+
+<% unless current_user.nil? %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= link_to 'New Pin', new_pin_path %>
+    </div>
+  </div>
+<% end %>
