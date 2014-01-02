@@ -1,27 +1,32 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h2>Edit <%= resource_name.to_s.humanize %></h1>
+    <h2><%= resource_name.to_s.humanize + ' Settings'%></h2>
   </div>
   <div class="panel-body">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="form-group">
+      <div class="form-group nr">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control", :autofocus => true %>
+      </div>
+
+      <div class="form-group nr">
         <%= f.label :email %>
         <%= f.email_field :email, class: "form-control", :autofocus => true %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+      <div class="form-group nr">
+        <%= f.label :password %> <em>(leave blank if you don't want to change it)</em>
         <%= f.password_field :password, class: "form-control", :autocomplete => "off" %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+      <div class="form-group nr">
+        <%= f.label :current_password %> <em>(we need your current password to confirm your changes)</em>
         <%= f.password_field :current_password, class: "form-control" %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group nr">
         <%= f.submit "Update", class: "btn btn-primary" %>
       </div>
     <% end %>

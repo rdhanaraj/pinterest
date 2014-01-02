@@ -24,6 +24,10 @@
     <% end %>
   </div>
 
+  <div class="text-center">
+    <%= will_paginate @pins, renderer: BootstrapPagination::Rails %>
+  </div>
+
 <% else %>
   <%= render 'pages/home' %>
 <% end %>
