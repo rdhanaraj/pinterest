@@ -4,7 +4,16 @@ class PinsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @pins = Pin.all.order('created_at DESC').paginate(page: params[:page], per_page: 15)
+    @search = Pin.search do
+      fulltext params[:search]
+
+      paginate page: params[:page] || 1, per_page: 15
+
+      order_by :score, :desc
+      order_by :created_at, :desc
+    end
+
+    @pins = @search.results
   end
 
   def show
